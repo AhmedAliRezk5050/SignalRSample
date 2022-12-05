@@ -8,6 +8,11 @@ userCountConnection.on('updateTotalViews', (totalViews) => {
     totalViewsCounterSpan.innerText = totalViews.toString();
 })
 
+userCountConnection.on('connectedUsersCountChanged', (totalConnectedUsers) => {
+    const totalConnectedUsersCountSpan = document.getElementById('totalConnectedUsersCount');
+    totalConnectedUsersCountSpan.innerText = totalConnectedUsers.toString();
+})
+
 //  invoke hub methods
 const newWindowLoadedOnClient = () => {
     userCountConnection.send('NewWindowLoaded');
