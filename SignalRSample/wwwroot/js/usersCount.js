@@ -15,7 +15,10 @@ userCountConnection.on('connectedUsersCountChanged', (totalConnectedUsers) => {
 
 //  invoke hub methods
 const newWindowLoadedOnClient = () => {
-    userCountConnection.send('NewWindowLoaded');
+    userCountConnection
+        // get value back from hub method
+        .invoke('NewWindowLoaded')
+        .then(totalViews => console.log("totalViews", totalViews));
 }
 
 // Start Connection
